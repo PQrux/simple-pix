@@ -1,6 +1,6 @@
 {
   "name": "@pqrux/simple-pix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple and lightweight package for generating PIX BR Codes and QR Codes.",
   "main": "lib/index.js",
   "files": [
