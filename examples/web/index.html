@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Webpack App</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="h1">SIMPLE PIX</h1>
+            <p>write down your info and click submit to generate a PIX BRCode and QRCode.</p>
+            <form id="form">
+                <div class="mb-1">
+                    <label for="pixKey" class="form-label">PIX Key</label>
+                    <input required type="text" class="form-control" name="pixKey">
+                </div>
+                <div class="mb-1">
+                    <label for="merchantName" class="form-label">Full Name</label>
+                    <input required type="text" class="form-control" name="merchantName">
+                </div>
+                <div class="mb-1">
+                    <label for="merchantCity" class="form-label">City</label>
+                    <input required type="text" class="form-control" name="merchantCity">
+                </div>
+                <div class="mb-1">
+                    <label for="value" class="form-label">Value (Optional)</label>
+                    <input type="number" class="form-control" name="value">
+                </div>
+                <div class="mb-1">
+                    <label for="txID" class="form-label">Transaction ID (Optional)</label>
+                    <input type="text" class="form-control" name="txID">
+                </div>
+                <div class="mb-1 form-check">
+                    <input class="form-check-input" type="checkbox" name="uniquePayment">
+                    <label class="form-check-label" for="uniquePayment">
+                        Unique Payment
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>              
+            <div id="result" style="display: none;">
+                <label for="brcode" class="form-label">Generated BRCode</label>
+                <input required type="text" class="form-control" id="brcode" disabled>
+                <div class="mx-auto" style="width: 400px;">
+                    <img style="width: 100%;" alt="qrcode" id="qrcode">
+                </div>
+            </div>
+            <p id="error" style="color: red;"></p>
+        </div>
+    </body>
+    
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                    .register("service-worker.js")
+                    .then((registration) => {
+                        console.log("Service Worker registered: ", registration);
+                    })
+                    .catch((registrationError) => {
+                        console.error("Service Worker registration failed: ", registrationError);
+                    });
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</html>
